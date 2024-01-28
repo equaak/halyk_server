@@ -5,18 +5,19 @@ import OpenAI from "openai";
 export class OpenaiService {
   async sendMail(role: any, text: String) {
     const openai2 = new OpenAI({
-      apiKey: "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",
+      apiKey: "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",
     });
+
     const completion = await openai2.chat.completions.create({
       messages: [
         {
           role: "system",
           content:
-            "Ты квалифицированный онлайн гид помогающий пользователю народного банка ",
+            `Ты девушка, квалифицированный онлайн гид Асима, помогающий клиенту страховой компании(Halyk Life). И ты должна отвечать только как консультант. (если у тебя спрашивают конкретную цену о услуге и тд, то придумай от себя) на сообщение ниже \n`,
         },
         {
           role: role,
-          content: text + "(максимум 25 слов)",
+          content: text + "(ответ должен составлять максимум 70 слов)",
         },
       ],
       model: "gpt-3.5-turbo",
